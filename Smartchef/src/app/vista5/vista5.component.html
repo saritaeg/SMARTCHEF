@@ -1,0 +1,74 @@
+<div class="vista5">
+
+  <!-- Barra superior con logo de vista4 -->
+  <header class="top-bar">
+    <div class="icon-left">&#x276E;</div>
+    <img src="assets/logosmartchef.png" class="logo" alt="Logo" />
+    <div class="icon-right"></div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Título -->
+  <h2 class="titulo">Tus favoritos</h2>
+  <p class="subtitulo">Recetas guardadas especialmente por ti</p>
+
+  <!-- Colecciones -->
+  <div class="colecciones-container" [class.expandida]="coleccionExpandida">
+    <label class="label">Colecciones</label>
+
+    <div class="colecciones-input">
+      <input type="text" placeholder="Nombre de la colección..." [(ngModel)]="coleccionNombre" />
+      <button class="btn-crear" *ngIf="!coleccionExpandida" (click)="abrirColeccion()">+</button>
+      <div *ngIf="coleccionExpandida" class="botones-expandido">
+        <button class="btn-crear" (click)="crearColeccion()">Añadir</button>
+        <button class="btn-cancelar" (click)="cancelarColeccion()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <div class="tabs">
+    <button *ngFor="let tab of tabs"
+            class="tab"
+            [class.active]="tab.activo"
+            (click)="cambiarTab(tab)">
+      {{ tab.nombre }} ({{ tab.count }})
+    </button>
+  </div>
+
+
+  <!-- Tarjetas -->
+  <div class="cards">
+    <div class="card" *ngFor="let card of cardsFiltradas">
+
+      <img [src]="card.img" />
+      <h3>{{ card.titulo }}</h3>
+      <p class="meta">{{ card.meta }}</p>
+
+      <div class="card-buttons">
+        <!-- Solo botón receta -->
+        <button class="btn-rec" (click)="abrirReceta(card)">Receta</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<nav class="bottom-nav">
+  <button (click)="irDescubrir()">
+    <img src="assets/icon/lupa.png" alt="Descubrir" />
+    <span>Descubrir</span>
+  </button>
+  <button (click)="irFavoritos()">
+    <img src="assets/icon/me-gusta.png" alt="Favoritos" />
+    <span>Favoritos</span>
+  </button>
+  <button (click)="irCompras()">
+    <img src="assets/icon/tienda.png" alt="Compras" />
+    <span>Compras</span>
+  </button>
+  <button (click)="irPlanificar()">
+    <img src="assets/icon/calendario.png" alt="Planificar" />
+    <span>Planificar</span>
+  </button>
+</nav>

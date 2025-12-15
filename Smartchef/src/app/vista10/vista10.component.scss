@@ -1,0 +1,115 @@
+.vista10 {
+  min-height: 100vh;
+  padding-bottom: 100px;
+  background: linear-gradient(#c3e3ff 0%, #c3e3ff 270px, white 270px, white 100%);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.logo {
+  height: 45px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: white;
+}
+
+/* Campos de edición */
+.hero-input,
+.input-titulo,
+.input-desc,
+.ingrediente-edit input,
+.paso-edit input {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 14px;
+  border: 1px solid #94c7ff;
+  background: white;
+  font-size: 14px;
+  color: #3b5f77;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  outline: none;
+}
+
+.input-desc {
+  height: 80px;
+  resize: none;
+}
+
+/* Secciones */
+.section-card {
+  width: 90%;
+  margin: 16px auto;
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.section-card h3 {
+  text-align: left;
+  color: #3b5f77;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Botones */
+button {
+  margin: 4px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  background: #6ea3c1;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #88b5ec;
+  }
+}
+
+/* Botón confirmar al final */
+.btn-confirm {
+  width: 90%;
+  padding: 14px;
+  margin-top: 16px;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+/* Ingredientes y pasos editables */
+.ingrediente-edit,
+.paso-edit {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ingrediente-edit button,
+.paso-edit button {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* Hero input (URL imagen) */
+.hero-input {
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  text-align: center;
+}

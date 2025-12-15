@@ -1,0 +1,389 @@
+/* Fondo dividido */
+.vista4 {
+  min-height: 100vh;
+  padding-bottom: 90px;
+  text-align: center;
+  background: linear-gradient(#c3e3ff 0%, #c3e3ff 260px, white 260px, white 100%);
+}
+
+/* ---------- Barra superior ---------- */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+}
+
+.icon-left,
+.icon-right {
+  font-size: 26px;
+  width: 40px;
+}
+
+.logo {
+  height: 45px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: white;
+}
+
+/* ---------- Títulos ---------- */
+.titulo {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b5f77;
+}
+
+.subtitulo {
+  margin-top: 4px;
+  color: #6289a6;
+  font-size: 14px;
+}
+
+/* ---------- Buscador ---------- */
+.search-container {
+  margin: 18px auto;
+  display: flex;
+  width: 90%;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #c7d9e8;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: white;
+  color: #4c6f8c;
+
+  &::placeholder {
+    color: #b5b5b5;
+  }
+}
+
+.btn-search {
+  width: 50px;
+  background: white !important;
+  border: none;
+  font-size: 18px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  width: 90%;
+  margin: 20px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding-bottom: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  position: relative; /* Necesario para etiquetas */
+
+  img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  h3 {
+    font-size: 14px;
+    margin: 8px 0 4px 0;
+    color: #3b5f77;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: #6289a6;
+    margin-bottom: 8px;
+  }
+}
+
+/* ---------- Etiquetas ---------- */
+.card-tags {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.tag-easy {
+  background: #38c172;
+  color: white;
+  padding: 3px 6px;
+  font-size: 11px;
+  border-radius: 6px;
+  font-weight: bold;
+  pointer-events: auto;
+}
+
+/* Corazón favorito */
+.heart-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ff6b81;
+  color: #ff6b81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: 0.25s ease;
+
+  &.filled {
+    background: #ff6b81;
+    color: white;
+  }
+}
+
+/* ---------- Botones dentro de la card ---------- */
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 10px 10px 10px;
+
+  button {
+    width: 100%;
+    background: #6ea3c1;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #88b5ec;
+    }
+  }
+}
+/* Contenedor de filtros */
+.filtros-container {
+  width: 90%;           /* mismo ancho que el buscador */
+  margin: 1px auto 15px auto; /* casi pegado al buscador */
+  position: relative;
+}
+
+.filtro-wrapper {
+  background: white;
+  border: 1px solid #c7d9e8;
+  border-radius: 15px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: center; /* texto centrado */
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  font-family: 'Roboto', sans-serif;  /* misma fuente que el buscador */
+  font-size: 15px;                     /* mismo tamaño */
+  font-weight: normal;                 /* mismo grosor */
+  color: #b5b5b5;                      /* mismo color que placeholder */
+  line-height: 1.5;                     /* mismo line-height */
+}
+
+
+
+
+
+
+/* Fondo gris translúcido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(136, 136, 136, 0.79);
+  z-index: 10;
+}
+
+/* Desplegable */
+.filtro-dropdown {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  label {
+    font-size: 15px;
+    color: #3b5f77;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #6ea3c1;
+  }
+}
+
+/* Botón aplicar */
+.btn-aplicar {
+  background: #6ea3c1;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
+/* ---------- Barra inferior ---------- */
+.resultados-texto {
+  margin: 5px auto 10px auto;
+  width: 90%;
+  text-align: left;
+  color: #6289a6;
+  font-size: 14px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  background: #d8eeff;
+  border-top: 1px solid #94c7ff;
+
+  button {
+    flex: 1;
+    background: none;
+    border: none;
+    text-align: center;
+    padding-top: 8px;
+
+    img {
+      width: 26px;
+      height: 26px;
+      display: block;
+      margin: 0 auto 4px;
+    }
+
+    span {
+      font-size: 12px;
+      color: #3b5f77;
+    }
+  }
+}
+/* Botón flotante + */
+.btn-add {
+  position: fixed;
+  bottom: 90px; /* encima de la barra inferior */
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #6ea3c1;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: background 0.2s;
+  z-index: 50;
+
+  &:hover {
+    background: #88b5ec;
+  }
+}
+/* ---------- Barra inferior ---------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  background: #d8eeff;
+  border-top: 1px solid #94c7ff;
+  z-index: 20;
+
+  button {
+    flex: 1;
+    background: none;
+    border: none;
+    text-align: center;
+    padding-top: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    img {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 4px;
+      transition: transform 0.2s ease;
+    }
+
+    span {
+      font-size: 12px;
+      color: #3b5f77;
+      transition: color 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    &:hover span {
+      color: #2f4c63;
+    }
+
+    &.active img {
+      transform: scale(1.1);
+    }
+
+    &.active span {
+      font-weight: bold;
+      color: #2f4c63;
+    }
+  }
+}
+

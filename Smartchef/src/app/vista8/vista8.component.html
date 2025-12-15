@@ -1,0 +1,102 @@
+<div class="vista8">
+
+  <!-- Barra superior con logo -->
+  <header class="top-bar">
+    <div class="icon-left">&#x276E;</div>
+    <img src="assets/logo-smartchef.png" class="logo" alt="Logo" />
+    <div class="icon-right"></div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Título y subtítulo -->
+  <h2 class="titulo">Planificador</h2>
+  <p class="subtitulo">Toda tus recetas organizadas y planificadas</p>
+
+  <!-- Botón añadir comida -->
+  <div class="add-meal-container">
+    <button class="btn-add-meal" (click)="abrirFormulario()">+ Añadir comida</button>
+  </div>
+
+  <!-- Mini formulario bonito -->
+  <div class="meal-form" *ngIf="mostrarFormulario">
+    <div class="form-header">
+      <img src="assets/logo-smartchef.png" class="form-logo" alt="Logo" />
+      <h3>Añadir comida</h3>
+    </div>
+
+    <div class="form-field">
+      <label>Fecha</label>
+      <input type="date" [(ngModel)]="form.fecha" />
+    </div>
+
+    <div class="form-field">
+      <label>Comida</label>
+      <div class="meal-buttons">
+        <button [class.selected]="form.tipo==='Desayuno'" (click)="form.tipo='Desayuno'">Desayuno</button>
+        <button [class.selected]="form.tipo==='Almuerzo'" (click)="form.tipo='Almuerzo'">Almuerzo</button>
+        <button [class.selected]="form.tipo==='Cena'" (click)="form.tipo='Cena'">Cena</button>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Receta</label>
+      <select [(ngModel)]="form.receta">
+        <option *ngFor="let r of recetas" [value]="r">{{ r }}</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label>Porciones</label>
+      <input type="number" min="1" [(ngModel)]="form.porciones" />
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn-confirm" (click)="cerrarFormulario()">Añadir</button>
+      <button class="btn-cancel" (click)="cerrarFormulario()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Navegación fechas -->
+  <div class="date-nav">
+    <button (click)="cambiarFecha(-1)">&#x276E;</button>
+    <span>{{ fechaActual | date:'dd/MM/yyyy' }}</span>
+    <button (click)="cambiarFecha(1)">&#x276F;</button>
+  </div>
+
+  <!-- Recuadros de comidas -->
+  <div class="meals-section">
+    <div class="meal-card">
+      <div class="meal-title">Desayuno</div>
+      <div class="meal-recipes"><div class="recipe-card">Vacío</div></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-title">Almuerzo</div>
+      <div class="meal-recipes"><div class="recipe-card">Vacío</div></div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-title">Cena</div>
+      <div class="meal-recipes"><div class="recipe-card">Vacío</div></div>
+    </div>
+  </div>
+
+</div>
+<nav class="bottom-nav">
+  <button (click)="irDescubrir()">
+    <img src="assets/icon/lupa.png" alt="Descubrir" />
+    <span>Descubrir</span>
+  </button>
+  <button (click)="irFavoritos()">
+    <img src="assets/icon/me-gusta.png" alt="Favoritos" />
+    <span>Favoritos</span>
+  </button>
+  <button (click)="irCompras()">
+    <img src="assets/icon/tienda.png" alt="Compras" />
+    <span>Compras</span>
+  </button>
+  <button (click)="irPlanificar()">
+    <img src="assets/icon/calendario.png" alt="Planificar" />
+    <span>Planificar</span>
+  </button>
+</nav>
+

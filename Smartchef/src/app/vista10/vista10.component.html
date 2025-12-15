@@ -1,0 +1,43 @@
+<div class="vista10">
+
+  <header class="top-bar">
+    <div class="icon-left" (click)="volver()">&#x276E;</div>
+    <img src="assets/logosmartchef.png" class="logo" />
+    <div class="icon-right"></div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Imagen vacía -->
+  <input type="text" placeholder="URL imagen" [(ngModel)]="titulo" class="hero-input"/>
+
+  <!-- Título -->
+  <input [(ngModel)]="titulo" placeholder="Título de la receta" class="input-titulo" />
+
+  <!-- Descripción -->
+  <textarea [(ngModel)]="descripcion" placeholder="Descripción de la receta" class="input-desc"></textarea>
+
+  <!-- Ingredientes -->
+  <div class="section-card">
+    <h3>Ingredientes</h3>
+    <div *ngFor="let ing of ingredientes; let i = index" class="ingrediente-edit">
+      <input [(ngModel)]="ingredientes[i]" placeholder="Ingrediente" />
+      <button (click)="eliminarIngrediente(i)">Eliminar</button>
+    </div>
+    <button (click)="anadirIngrediente()">Añadir ingrediente</button>
+  </div>
+
+  <!-- Pasos -->
+  <div class="section-card">
+    <h3>Preparación paso a paso</h3>
+    <div *ngFor="let paso of pasos; let i = index" class="paso-edit">
+      <input [(ngModel)]="pasos[i]" placeholder="Paso" />
+      <button (click)="eliminarPaso(i)">Eliminar</button>
+    </div>
+    <button (click)="anadirPaso()">Añadir paso</button>
+  </div>
+
+  <!-- Botón confirmar -->
+  <button class="btn-confirm" (click)="confirmar()">Confirmar</button>
+
+</div>

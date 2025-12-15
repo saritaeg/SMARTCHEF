@@ -1,0 +1,60 @@
+<div class="vista11">
+
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <div class="icon-left" (click)="volver()">&#x276E;</div>
+    <img src="assets/logosmartchef.png" class="logo" alt="Logo" />
+    <div class="icon-right"></div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Título -->
+  <h2 class="titulo">Añadir nueva receta</h2>
+  <p class="subtitulo">Rellena los campos para crear tu receta</p>
+
+  <!-- Formulario -->
+  <div class="form-container">
+
+    <div class="form-field">
+      <label>Título de la receta</label>
+      <input type="text" [(ngModel)]="receta.titulo" placeholder="Ej: Pinchito de pollo" />
+    </div>
+
+    <div class="form-field">
+      <label>Imagen URL</label>
+      <input type="text" [(ngModel)]="receta.img" placeholder="https://..." />
+    </div>
+
+    <div class="form-field">
+      <label>Descripción</label>
+      <textarea [(ngModel)]="receta.descripcion" placeholder="Descripción breve"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Tiempo de preparación</label>
+      <input type="text" [(ngModel)]="receta.tiempo" placeholder="Ej: 30 min" />
+    </div>
+
+    <div class="form-field">
+      <label>Porciones</label>
+      <input type="number" [(ngModel)]="receta.porciones" min="1" placeholder="4" />
+    </div>
+
+    <div class="form-field">
+      <label>Ingredientes</label>
+      <textarea [(ngModel)]="receta.ingredientes" placeholder="Separados por comas"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Pasos</label>
+      <textarea [(ngModel)]="receta.pasos" placeholder="Separados por comas"></textarea>
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn-confirm" (click)="confirmar()">Confirmar</button>
+      <button class="btn-cancel" (click)="volver()">Cancelar</button>
+    </div>
+
+  </div>
+</div>

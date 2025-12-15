@@ -1,0 +1,274 @@
+.vista5 {
+  min-height: 100vh;
+  padding-bottom: 90px;
+  text-align: center;
+  background: linear-gradient(#c3e3ff 0%, #c3e3ff 260px, white 260px, white 100%);
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+}
+
+.icon-left,
+.icon-right {
+  width: 40px;
+  font-size: 26px;
+}
+
+.logo {
+  height: 45px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: white;
+}
+
+/* Títulos */
+.titulo {
+  margin-top: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b5f77;
+}
+
+.subtitulo {
+  font-size: 14px;
+  color: #6289a6;
+  margin-bottom: 20px;
+}
+
+/* Colecciones */
+.colecciones-container {
+  width: 90%;
+  margin: 0 auto 30px auto;
+  text-align: left;
+  transition: all 0.3s ease;
+
+  &.expandida {
+    padding-bottom: 10px;
+  }
+
+  .colecciones-input {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #94c7ff;
+      background: white;
+      transition: all 0.3s ease;
+    }
+
+    .botones-expandido {
+      display: flex;
+      gap: 8px;
+
+      button {
+        flex: 1;
+        font-weight: bold;
+      }
+    }
+
+    .btn-crear, .btn-cancelar {
+      border-radius: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border: 1px solid #94c7ff;
+      font-size: 14px;
+    }
+
+    .btn-crear {
+      background: #d8eeff;
+      color: #3b5f77;
+    }
+
+    .btn-cancelar {
+      background: white;
+      color: #3b5f77;
+    }
+  }
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .tab {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #94c7ff;
+    border-radius: 14px;
+    font-size: 13px;
+    color: #3b5f77;
+
+    &.active {
+      background: #d8eeff;
+      font-weight: bold;
+    }
+  }
+}
+
+/* Cards */
+.cards {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding-bottom: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+
+  img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  h3 {
+    font-size: 14px;
+    margin: 8px 0 4px 0;
+    color: #3b5f77;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: #6289a6;
+    margin-bottom: 8px;
+  }
+
+  .card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px 10px 10px;
+
+    button {
+      width: 100%;
+      background: #6ea3c1;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #88b5ec;
+      }
+    }
+  }
+}
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: #d8eeff;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #94c7ff;
+
+  button {
+    flex: 1;
+    background: none;
+    border: none;
+    text-align: center;
+    padding-top: 8px;
+
+    img {
+      width: 26px;
+      height: 26px;
+      display: block;
+      margin: auto;
+    }
+
+    span {
+      font-size: 12px;
+      color: #3b5f77;
+    }
+
+    &.active span {
+      font-weight: bold;
+      color: #2f4c63;
+    }
+  }
+}
+/* ---------- Barra inferior ---------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  background: #d8eeff;
+  border-top: 1px solid #94c7ff;
+  z-index: 20;
+
+  button {
+    flex: 1;
+    background: none;
+    border: none;
+    text-align: center;
+    padding-top: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    img {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 4px;
+      transition: transform 0.2s ease;
+    }
+
+    span {
+      font-size: 12px;
+      color: #3b5f77;
+      transition: color 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    &:hover span {
+      color: #2f4c63;
+    }
+
+    &.active img {
+      transform: scale(1.1);
+    }
+
+    &.active span {
+      font-weight: bold;
+      color: #2f4c63;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<div class="vista6">
+
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <div class="icon-left">&#x276E;</div>
+    <img src="assets/logo-smartchef.png" class="logo" alt="Logo" />
+
+    <div class="icon-right"></div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- Título -->
+  <h2 class="titulo">Lista de compra</h2>
+  <p class="subtitulo">{{ ingredientes.length }} ingredientes – 0 comprados</p>
+
+  <!-- Botón + Añadir -->
+  <div class="add-container">
+    <button class="btn-add" (click)="mostrarFormulario()">+ Añadir</button>
+  </div>
+
+  <!-- Lista de elementos -->
+  <div class="lista">
+    <div class="item" *ngFor="let ingrediente of ingredientes; let i = index">
+      {{ ingrediente.nombre }} - {{ ingrediente.cantidad }}
+      <button class="btn-comprado" (click)="marcarComprado(i)">Comprado</button>
+    </div>
+  </div>
+
+  <!-- Formulario emergente -->
+  <div class="overlay-form" *ngIf="formularioVisible">
+    <div class="form-container">
+      <h3>Añadir ingrediente</h3>
+
+      <input type="text" placeholder="Nombre del artículo" [(ngModel)]="nuevoIngrediente.nombre" />
+      <input type="text" placeholder="Cantidad" [(ngModel)]="nuevoIngrediente.cantidad" />
+
+      <select [(ngModel)]="nuevoIngrediente.categoria">
+        <option value="" disabled selected>Selecciona categoría</option>
+        <option value="Congelados">Congelados</option>
+        <option value="Bebidas">Bebidas</option>
+        <option value="Lácteos">Lácteos</option>
+        <option value="Dulces">Dulces</option>
+      </select>
+
+      <div class="form-buttons">
+        <button class="btn-form" (click)="agregarIngrediente()">Añadir</button>
+        <button class="btn-cancel" (click)="cerrarFormulario()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="bottom-nav">
+  <button (click)="irDescubrir()">
+    <img src="assets/icon/lupa.png" alt="Descubrir" />
+    <span>Descubrir</span>
+  </button>
+  <button (click)="irFavoritos()">
+    <img src="assets/icon/me-gusta.png" alt="Favoritos" />
+    <span>Favoritos</span>
+  </button>
+  <button (click)="irCompras()">
+    <img src="assets/icon/tienda.png" alt="Compras" />
+    <span>Compras</span>
+  </button>
+  <button (click)="irPlanificar()">
+    <img src="assets/icon/calendario.png" alt="Planificar" />
+    <span>Planificar</span>
+  </button>
+</nav>

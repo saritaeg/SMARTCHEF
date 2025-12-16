@@ -1,6 +1,5 @@
 <div class="vista4">
 
-  <!-- Barra superior -->
   <header class="top-bar">
     <div class="icon-left">&#x276E;</div>
     <img src="assets/logosmartchef.png" class="logo" alt="Logo" />
@@ -9,25 +8,23 @@
 
   <div class="divider"></div>
 
-  <!-- Título -->
   <h2 class="titulo">¿Qué cocinarás hoy?</h2>
   <p class="subtitulo">Encuentra recetas perfectas con lo que tienes en casa</p>
 
-  <!-- Buscador -->
   <div class="search-container">
     <input
       [(ngModel)]="searchQuery"
       type="text"
       class="search-input"
       placeholder="Buscar ingredientes o receta"
+      (input)="buscar()"
     />
+    <button class="btn-search" (click)="buscar()">🔍</button>
   </div>
 
-  <!-- Filtros -->
   <div class="filtros-container">
     <div class="filtro-wrapper" (click)="toggleDesplegable()">
-      <span>{{ textoFiltros }}</span>
-      ▼
+      <span>{{ textoFiltros }}</span> ▼
     </div>
 
     <div class="overlay" *ngIf="desplegarFiltros" (click)="cerrarFiltros()"></div>
@@ -51,41 +48,25 @@
 
   <p class="resultados-texto">{{ cards.length }} recetas encontradas</p>
 
-  <!-- Cards -->
-  <!-- Cards -->
   <div class="cards">
     <div class="card" *ngFor="let card of cards; let i = index">
-
-      <!-- Etiquetas -->
-      <div class="card-tags">
-        <span class="tag-easy">Fácil</span>
-        <span class="heart-circle" [class.filled]="card.favorito" (click)="toggleFavorito(card)">
-        ♥
-      </span>
-      </div>
-
-      <img [src]="card.img" />
-      <h3>{{ card.titulo }}</h3>
-      <p class="meta">{{ card.meta }}</p>
+      <img [src]="card.fotoUrl">
+      <h3>{{ card.nombre }}</h3>
+      <p class="meta">{{ card.tiempoPreparacion }} min</p>
 
       <div class="card-buttons">
-        <!-- Botón de receta -->
         <button class="btn-rec" (click)="abrirReceta(card)">Receta</button>
-        <!-- Nuevo botón de eliminar -->
-        <button class="btn-eliminar" (click)="eliminarCard(i)">Eliminar</button>
-      </div>
+        <button (click)="eliminarCard(card, i)">Eliminar</button>
 
+      </div>
     </div>
   </div>
 
 
-  <!-- Botón flotante para añadir receta -->
   <button class="btn-add" (click)="anadirReceta()">+</button>
 
 </div>
 
-<!-- Barra inferior -->
-<!-- Barra inferior -->
 <nav class="bottom-nav">
   <button (click)="irDescubrir()">
     <img src="assets/icon/lupa.png" alt="Descubrir" />
@@ -104,4 +85,3 @@
     <span>Planificar</span>
   </button>
 </nav>
-

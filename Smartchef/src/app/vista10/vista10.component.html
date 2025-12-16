@@ -8,36 +8,84 @@
 
   <div class="divider"></div>
 
-  <!-- Imagen vacía -->
-  <input type="text" placeholder="URL imagen" [(ngModel)]="titulo" class="hero-input"/>
+  <input
+    type="text"
+    placeholder="URL de la imagen"
+    [(ngModel)]="fotoUrl"
+    class="hero-input"
+  />
 
-  <!-- Título -->
-  <input [(ngModel)]="titulo" placeholder="Título de la receta" class="input-titulo" />
+  <input
+    [(ngModel)]="titulo"
+    placeholder="Título de la receta"
+    class="input-titulo"
+  />
 
-  <!-- Descripción -->
-  <textarea [(ngModel)]="descripcion" placeholder="Descripción de la receta" class="input-desc"></textarea>
+  <textarea
+    [(ngModel)]="descripcion"
+    placeholder="Descripción de la receta"
+    class="input-desc">
+  </textarea>
 
-  <!-- Ingredientes -->
   <div class="section-card">
     <h3>Ingredientes</h3>
-    <div *ngFor="let ing of ingredientes; let i = index" class="ingrediente-edit">
-      <input [(ngModel)]="ingredientes[i]" placeholder="Ingrediente" />
+
+    <div
+      *ngFor="let ing of ingredientes; let i = index"
+      class="ingrediente-edit"
+    >
+      <input
+        [(ngModel)]="ing.nombre"
+        placeholder="Ingrediente"
+      />
+
+      <input
+        type="number"
+        [(ngModel)]="ing.cantidad"
+        placeholder="Cantidad"
+      />
+
+      <input
+        [(ngModel)]="ing.unidad"
+        placeholder="Unidad (g, ml, ud...)"
+      />
+
+      <input
+        [(ngModel)]="ing.categoria"
+        placeholder="Categoría"
+      />
+
       <button (click)="eliminarIngrediente(i)">Eliminar</button>
     </div>
-    <button (click)="anadirIngrediente()">Añadir ingrediente</button>
+
+    <button (click)="anadirIngrediente()">+ Añadir ingrediente</button>
   </div>
 
-  <!-- Pasos -->
   <div class="section-card">
     <h3>Preparación paso a paso</h3>
-    <div *ngFor="let paso of pasos; let i = index" class="paso-edit">
-      <input [(ngModel)]="pasos[i]" placeholder="Paso" />
+
+    <div
+      *ngFor="let paso of pasos; let i = index"
+      class="paso-edit"
+    >
+      <input
+        [(ngModel)]="paso.descripcion"
+        placeholder="Descripción del paso"
+      />
+
+      <input
+        [(ngModel)]="paso.imagenUrl"
+        placeholder="URL imagen del paso (opcional)"
+      />
+
       <button (click)="eliminarPaso(i)">Eliminar</button>
     </div>
-    <button (click)="anadirPaso()">Añadir paso</button>
+
+    <button (click)="anadirPaso()">+ Añadir paso</button>
   </div>
 
-  <!-- Botón confirmar -->
-  <button class="btn-confirm" (click)="confirmar()">Confirmar</button>
+  <button class="btn-confirm" (click)="confirmar()">
+    Guardar cambios
+  </button>
 
 </div>

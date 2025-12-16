@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // ✅ Importante para HttpClient
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,9 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [
     IonicModule,
-    RouterOutlet,
-  ],
+    RouterModule,
+    HttpClientModule
+  ]
 })
 export class AppComponent {
   title = 'SmartChef';

@@ -24,30 +24,26 @@ export class Vista6Component {
 
   nuevoIngrediente = { nombre: '', cantidad: '', categoria: '' };
 
-  // Mostrar formulario
+
   mostrarFormulario() {
     this.formularioVisible = true;
   }
 
-  // Cerrar formulario
   cerrarFormulario() {
     this.formularioVisible = false;
     this.nuevoIngrediente = { nombre: '', cantidad: '', categoria: '' };
   }
 
-  // Añadir ingrediente
   agregarIngrediente() {
     if (!this.nuevoIngrediente.nombre.trim() || !this.nuevoIngrediente.cantidad.trim()) return;
     this.ingredientes.push({ ...this.nuevoIngrediente });
     this.cerrarFormulario();
   }
 
-  // Marcar comprado
   marcarComprado(index: number) {
     this.ingredientes.splice(index, 1);
   }
 
-  // Navegación
   irDescubrir() { this.router.navigate(['/vista4']); }
   irFavoritos() { this.router.navigate(['/vista5']); }
   irCompras() { this.router.navigate(['/vista6']); }

@@ -1,6 +1,5 @@
 <div class="vista5">
 
-  <!-- Barra superior con logo de vista4 -->
   <header class="top-bar">
     <div class="icon-left">&#x276E;</div>
     <img src="assets/logosmartchef.png" class="logo" alt="Logo" />
@@ -9,11 +8,9 @@
 
   <div class="divider"></div>
 
-  <!-- Título -->
   <h2 class="titulo">Tus favoritos</h2>
   <p class="subtitulo">Recetas guardadas especialmente por ti</p>
 
-  <!-- Colecciones -->
   <div class="colecciones-container" [class.expandida]="coleccionExpandida">
     <label class="label">Colecciones</label>
 
@@ -35,8 +32,6 @@
     </button>
   </div>
 
-
-  <!-- Tarjetas -->
   <div class="cards">
     <div class="card" *ngFor="let card of cardsFiltradas">
 
@@ -45,7 +40,6 @@
       <p class="meta">{{ card.meta }}</p>
 
       <div class="card-buttons">
-        <!-- Solo botón receta -->
         <button class="btn-rec" (click)="abrirReceta(card)">Receta</button>
       </div>
 

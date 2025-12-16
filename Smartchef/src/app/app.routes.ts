@@ -18,8 +18,18 @@ export const routes: Routes = [
   { path: 'vista5', component: Vista5Component },
   { path: 'vista6', component: Vista6Component },
   { path: 'vista8', component: Vista8Component },
-  { path: 'vista9', component: Vista9Component },
-  { path: 'vista10', component: Vista10Component },
+  {
+    path: 'vista9/:id',
+    loadComponent: () =>
+      import('./vista9/vista9.component').then(m => m.Vista9Component)
+  },
+
+  {
+    path: 'vista10/:id',
+    loadComponent: () =>
+      import('./vista10/vista10.component').then(m => m.Vista10Component)
+  }
+,
   { path: 'vista11', component: Vista11Component },
   { path: '**', redirectTo: '' }
 ];

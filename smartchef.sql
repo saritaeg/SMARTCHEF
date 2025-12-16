@@ -7,11 +7,15 @@ CREATE TABLE usuarios(
     contrasenia VARCHAR(255) NOT NULL,
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+INSERT INTO usuarios (id_usuario, nombre, email, contrasenia)
+VALUES (1, 'Usuario Demo', 'demo@smartchef.com', '123456');
+
 ALTER TABLE usuarios
 ADD COLUMN vegetariano BOOLEAN DEFAULT FALSE,
 ADD COLUMN sin_gluten BOOLEAN DEFAULT FALSE,
 ADD COLUMN rapido BOOLEAN DEFAULT FALSE,
 ADD COLUMN economico BOOLEAN DEFAULT FALSE;
+INSERT INTO usuarios(nombre, email, contrasenia) VALUES('Juan', 'juan@example.com', '123456');
 
 
 CREATE TABLE recetas(

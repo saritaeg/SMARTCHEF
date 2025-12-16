@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+import { RecetaCard } from '../modelos/receta-card.model';
+import { RecetaService } from '../servicio/receta-service';
 
 @Component({
   selector: 'app-vista4',
@@ -10,121 +13,121 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
-export class Vista4Component {
+export class Vista4Component implements OnInit {
 
   private router = inject(Router);
+  private recetaService = inject(RecetaService);
+
   searchQuery: string = '';
+  cards: RecetaCard[] = [];
+  usuarioId = 1;
 
-  // --------------------------------
-  // LISTA DE CARDS
-  // --------------------------------
-  cards = [
-    {
-      titulo: "Pechitos de pollo con verduras",
-      img: "assets/pinchito.jpeg",
-      meta: "25 min • 1 persona",
-      favorito: false
-    },
-    {
-      titulo: "Wrap de Pollo, Aguacate y Queso",
-      img: "assets/wrap.jpeg",
-      meta: "15 min • 2 personas",
-      favorito: false
-    },
-    {
-      titulo: "Pasta Integral con Pesto",
-      img: "assets/pasta.jpeg",
-      meta: "30 min • 3 personas",
-      favorito: false
-    }
-
-  ];
-
-  // --------------------------------
-  // FILTROS
-  // --------------------------------
   desplegarFiltros: boolean = false;
-
   filtros = {
     vegetariano: false,
     sinGluten: false,
     rapido: false,
     economico: false
   };
+  textoFiltros: string = 'Filtros';
 
+  ngOnInit(): void {
+    this.cargarRecetas();
+  }
 
-  textoFiltros: string = "Filtros";
+  cargarRecetas(): void {
+    this.recetaService.obtenerRecetas(
+      this.searchQuery || undefined,
+      this.filtros.vegetariano,
+      this.filtros.sinGluten,
+      this.filtros.rapido,
+      this.filtros.economico
+    ).subscribe({
+      next: data => {
+        this.cards = data.map(r => ({
+          ...r,
+          fotoUrl: r.fotoUrl || 'assets/default-recipe.jpeg',
+          favorito: false
+        }));
+      },
+      error: err => console.error('Error al cargar recetas:', err)
+    });
+  }
 
-  toggleDesplegable() {
+  toggleDesplegable(): void {
     this.desplegarFiltros = !this.desplegarFiltros;
   }
 
-  cerrarFiltros() {
+  cerrarFiltros(): void {
     this.desplegarFiltros = false;
   }
 
-  aplicarFiltros() {
+  aplicarFiltros(): void {
     const seleccionados: string[] = [];
 
-    if (this.filtros.vegetariano) seleccionados.push("Vegetariano");
-    if (this.filtros.sinGluten) seleccionados.push("Sin gluten");
-    if (this.filtros.rapido) seleccionados.push("Rápido");
-    if (this.filtros.economico) seleccionados.push("Económico");
+    if (this.filtros.vegetariano) seleccionados.push('Vegetariano');
+    if (this.filtros.sinGluten) seleccionados.push('Sin gluten');
+    if (this.filtros.rapido) seleccionados.push('Rápido');
+    if (this.filtros.economico) seleccionados.push('Económico');
 
-    this.textoFiltros = seleccionados.length > 0
-      ? seleccionados.join(", ")
-      : "Filtros";
+    this.textoFiltros = seleccionados.length
+      ? seleccionados.join(', ')
+      : 'Filtros';
 
     this.desplegarFiltros = false;
+    this.cargarRecetas();
   }
 
-  // --------------------------------
-  // FUNCIONES CARDS
-  // --------------------------------
-  toggleFavorito(card: any) {
+  buscar(): void {
+    this.cargarRecetas();
+  }
+
+  toggleFavorito(card: RecetaCard): void {
     card.favorito = !card.favorito;
+
+    this.recetaService.marcarFavorito(card.idReceta, this.usuarioId)
+      .subscribe({
+        next: () =>
+          console.log(`Receta ${card.idReceta} marcada como favorita`),
+        error: err => console.error(err)
+      });
   }
 
-  buscar() {
-    console.log('Buscando:', this.searchQuery);
-  }
-
-  // --------------------------------
-  // NAVEGACIÓN
-  // --------------------------------
-  irDescubrir() {
-    this.router.navigate(['/vista4']);
-  }
-
-  irFavoritos() {
-    this.router.navigate(['/vista5']);
-  }
-
-  irCompras() {
-    console.log('/vista6');
+  abrirReceta(card: RecetaCard): void {
+    this.router.navigate(['/vista9', card.idReceta]);
   }
 
 
-
-  irPlanificar() {
-    console.log('/vista8');
-  }
-
-  // Reemplaza la función abrirReceta para que solo el botón recete la abra
-  abrirReceta(card: any) {
-    this.router.navigate(['/vista9'], {
-      state: { receta: card }
+  eliminarCard(card: RecetaCard, index: number): void {
+    this.recetaService.eliminarReceta(card.idReceta).subscribe({
+      next: () => {
+        this.cards.splice(index, 1);
+        console.log('Receta eliminada correctamente');
+      },
+      error: err => {
+        console.error('Error al eliminar receta', err);
+      }
     });
   }
-  // Función para eliminar la card de la lista
-  eliminarCard(index: number) {
-    this.cards.splice(index, 1);
-  }
 
-// Nueva función para el botón +
-  anadirReceta() {
+
+  anadirReceta(): void {
     this.router.navigate(['/vista11']);
   }
 
+  irDescubrir(): void {
+    this.router.navigate(['/vista4']);
+  }
 
+  irFavoritos(): void {
+    this.router.navigate(['/vista5']);
+  }
+
+  irCompras(): void {
+    console.log('/vista6');
+  }
+
+  irPlanificar(): void {
+    console.log('/vista8');
+  }
 }

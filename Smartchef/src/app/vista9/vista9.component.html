@@ -1,6 +1,5 @@
 <div class="vista9">
 
-  <!-- Barra superior -->
   <header class="top-bar">
     <div class="icon-left" (click)="volver()">&#x276E;</div>
     <img src="assets/logosmartchef.png" class="logo" alt="Logo" />
@@ -9,88 +8,50 @@
 
   <div class="divider"></div>
 
-  <!-- Imagen principal -->
-  <img src="assets/pinchito.jpeg" class="hero-img" alt="Pinchito" />
+  <img [src]="receta?.fotoUrl || 'assets/default-recipe.jpeg'"
+       class="hero-img" />
 
-  <!-- Título -->
-  <h2 class="titulo">Pinchito de Pollo con Verdura</h2>
+  <h2 class="titulo">{{ receta?.nombre }}</h2>
+
   <p class="subtitulo">
-    Deliciosos pinchitos con pollo jugoso y verduras frescas, perfectos para compartir.
+    {{ receta?.descripcion }}
   </p>
 
-  <!-- Información rápida -->
-  <div class="info-grid">
-    <div class="info-box">30 min</div>
-    <div class="info-box">4 personas</div>
-    <div class="info-box">Mediterráneo</div>
-    <div class="info-box">No vegetariano</div>
-    <div class="info-box">Sin gluten</div>
-    <div class="info-box">Aprox: 8€</div>
+
+  <div class="info-grid" *ngIf="receta">
+    <div class="info-box">{{ receta.tiempoPreparacion }} min</div>
+    <div class="info-box">{{ receta.vegetariano ? 'Vegetariano' : 'No vegetariano' }}</div>
+    <div class="info-box" *ngIf="receta.sinGluten">Sin gluten</div>
+    <div class="info-box" *ngIf="receta.rapido">Rápido</div>
+    <div class="info-box" *ngIf="receta.economico">Económico</div>
   </div>
 
-  <!-- Botón añadir -->
   <button class="btn-add" (click)="anadirCompra()">+ Añadir a compra</button>
 
-  <!-- Nuevo botón editar -->
   <button class="btn-add btn-edit" (click)="editarReceta()">Editar</button>
 
 
-  <!-- Ingredientes -->
   <div class="section-card">
     <h3 class="section-title">Ingredientes</h3>
 
     <ul class="ingredientes-list">
-      <li>500 g de pechuga de pollo</li>
-      <li>1 pimiento rojo</li>
-      <li>1 pimiento verde</li>
-      <li>1 cebolla morada</li>
-      <li>1 calabacín</li>
-      <li>1 cda de aceite de oliva</li>
-      <li>1 cda de salsa de soja</li>
-      <li>1/2 cda de limón</li>
-      <li>1 cdita de pimentón dulce</li>
-      <li>sal y pimienta al gusto</li>
-      <li>palitos de brocheta</li>
+      <li *ngFor="let ing of receta?.ingredientes">
+        {{ ing.cantidad }} {{ ing.unidad }} de {{ ing.nombre }}
+      </li>
     </ul>
-  </div>
-
-  <!-- Preparación -->
-  <div class="section-card">
-    <h3 class="section-title">Preparación paso a paso</h3>
-
-    <div class="paso">
-      <img src="assets/marinado.jpg" alt="Paso 1" />
-      <p>
-        Marinar el pollo: En un bol mezclar pollo, aceite de oliva, jugo de limón, salsa de soja,
-        pimentón, sal y pimienta. Dejar reposar 15 minutos.
-      </p>
-    </div>
-
-    <div class="paso">
-      <img src="assets/verduras.jpg" alt="Paso 2" />
-      <p>
-        Preparar las verduras: cortar los pimientos y la cebolla en cubos, y el calabacín en rodajas.
-      </p>
-    </div>
-
-    <div class="paso">
-      <img src="assets/ensartar.jpg" alt="Paso 3" />
-      <p>
-        Armar los pinchitos alternando pollo y verduras. Hornear o asar 10-12 minutos.
-      </p>
-    </div>
-
-    <div class="paso">
-      <img src="assets/plato.jpg" alt="Paso 4" />
-      <p>
-        Servir con ensalada fresca o arroz.
-      </p>
-    </div>
 
   </div>
+
+  <div class="paso" *ngFor="let paso of receta?.instrucciones">
+    <img *ngIf="paso.imagenUrl" [src]="paso.imagenUrl" />
+    <p>
+      <strong>Paso {{ paso.pasoNumero }}:</strong>
+      {{ paso.descripcion }}
+    </p>
+  </div>
+
 </div>
 
-<!-- Barra inferior -->
 <nav class="bottom-nav">
   <button (click)="irDescubrir()">
     <img src="assets/icon-home.png" />

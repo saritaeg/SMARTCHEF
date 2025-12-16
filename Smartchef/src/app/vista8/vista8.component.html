@@ -1,6 +1,5 @@
 <div class="vista8">
 
-  <!-- Barra superior con logo -->
   <header class="top-bar">
     <div class="icon-left">&#x276E;</div>
     <img src="assets/logo-smartchef.png" class="logo" alt="Logo" />
@@ -9,16 +8,13 @@
 
   <div class="divider"></div>
 
-  <!-- Título y subtítulo -->
   <h2 class="titulo">Planificador</h2>
   <p class="subtitulo">Toda tus recetas organizadas y planificadas</p>
 
-  <!-- Botón añadir comida -->
   <div class="add-meal-container">
     <button class="btn-add-meal" (click)="abrirFormulario()">+ Añadir comida</button>
   </div>
 
-  <!-- Mini formulario bonito -->
   <div class="meal-form" *ngIf="mostrarFormulario">
     <div class="form-header">
       <img src="assets/logo-smartchef.png" class="form-logo" alt="Logo" />
@@ -57,14 +53,12 @@
     </div>
   </div>
 
-  <!-- Navegación fechas -->
   <div class="date-nav">
     <button (click)="cambiarFecha(-1)">&#x276E;</button>
     <span>{{ fechaActual | date:'dd/MM/yyyy' }}</span>
     <button (click)="cambiarFecha(1)">&#x276F;</button>
   </div>
 
-  <!-- Recuadros de comidas -->
   <div class="meals-section">
     <div class="meal-card">
       <div class="meal-title">Desayuno</div>

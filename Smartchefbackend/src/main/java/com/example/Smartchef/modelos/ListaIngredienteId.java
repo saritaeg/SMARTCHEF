@@ -1,9 +1,11 @@
 package com.example.Smartchef.modelos;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Table;
+
 import java.io.Serializable;
 import java.util.Objects;
-
+@Table(name = "lista_ingredientes", schema = "public")
 @Embeddable
 public class ListaIngredienteId implements Serializable {
 

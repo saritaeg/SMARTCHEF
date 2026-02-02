@@ -2,7 +2,7 @@ package com.example.Smartchef.modelos;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "favoritos")
+@Table(name = "favoritos", schema = "public")
 @IdClass(FavoritoId.class)
 public class Favorito {
 

@@ -4,12 +4,15 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicfram21ework.com/",
   "scripts": {
-    "build": "npx ng build --configuration production",
+    "ng": "ng",
     "start": "ng serve --proxy-config src/proxy.conf.json",
+    "build": "npx ng build --configuration production",
+    "build:render": "npm install --legacy-peer-deps --omit=dev && npx ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
   },
+
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.0.0",

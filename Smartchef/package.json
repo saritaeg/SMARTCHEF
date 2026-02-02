@@ -4,9 +4,8 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicfram21ework.com/",
   "scripts": {
-    "ng": "ng",
+    "build": "npx ng build --configuration production",
     "start": "ng serve --proxy-config src/proxy.conf.json",
-    "build": "node node_modules/@angular/cli/bin/ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -44,7 +43,7 @@
     "@angular-eslint/eslint-plugin-template": "^18.0.0",
     "@angular-eslint/schematics": "^18.0.0",
     "@angular-eslint/template-parser": "^18.0.0",
-    "@angular/cli": "^18.0.0",
+    "@angular/cli": "^18.2.21",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/language-service": "^18.0.0",
     "@capacitor/cli": "^6.1.2",

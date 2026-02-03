@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-
-@CrossOrigin(origins = "https://smartchef-gdyy.onrender.com")
+@CrossOrigin(origins = "https://smartchef-1-sdnt.onrender.com")
 @RestController
 @RequestMapping("/api/listas-compra")
 public class ListaCompraController {

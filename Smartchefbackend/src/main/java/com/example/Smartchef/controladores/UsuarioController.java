@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/usuarios")
 @AllArgsConstructor
-@CrossOrigin(origins = "https://smartchef-gdyy.onrender.com")
+@CrossOrigin(origins = "https://smartchef-1-sdnt.onrender.com")
 public class UsuarioController {
 
     private final UsuarioService service;

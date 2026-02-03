@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "https://smartchef-gdyy.onrender.com")
+@CrossOrigin(origins = "https://smartchef-1-sdnt.onrender.com")
 @RestController
 @RequestMapping("/api/estadisticas")
 public class EstadisticaController {

@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://smartchef-gdyy.onrender.com")
 @RestController
 @RequestMapping("/api/listas-compra")
 public class ListaCompraController {

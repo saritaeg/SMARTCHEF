@@ -5,7 +5,7 @@ import com.example.Smartchef.servicios.HistorialService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://smartchef-gdyy.onrender.com")
 @RestController
 @RequestMapping("/api/historial-cocina")
 public class HistorialController {

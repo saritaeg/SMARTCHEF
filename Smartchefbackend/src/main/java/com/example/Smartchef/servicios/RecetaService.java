@@ -230,4 +230,11 @@ public class RecetaService {
                 .map(recetaMapper::toCardDTO)
                 .toList();
     }
+    public void testBuscarRecetas() {
+        List<Receta> recetas = recetaRepository.buscarRecetasPorIngredienteYPreferencias(
+                null, null, null, null, null
+        );
+        System.out.println("Recetas encontradas: " + recetas.size());
+    }
+
 }

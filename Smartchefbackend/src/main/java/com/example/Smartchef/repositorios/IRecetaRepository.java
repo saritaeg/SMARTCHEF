@@ -44,15 +44,15 @@ public interface IRecetaRepository extends JpaRepository<Receta, Integer> {
             @Param("ingrediente") String ingrediente
     );
     @Query("""
-    SELECT DISTINCT r
-    FROM Receta r
-    LEFT JOIN r.recetaIngredientes ri
-    LEFT JOIN ri.ingrediente i
-    WHERE (:vegetariano IS NULL OR r.vegetariano = :vegetariano)
-      AND (:sinGluten IS NULL OR r.sinGluten = :sinGluten)
-      AND (:rapido IS NULL OR r.rapido = :rapido)
-      AND (:economico IS NULL OR r.economico = :economico)
-      AND (:ingrediente IS NULL OR UPPER(i.nombre) LIKE UPPER(CONCAT('%', :ingrediente, '%')))
+SELECT DISTINCT r
+FROM Receta r
+LEFT JOIN r.recetaIngredientes ri
+LEFT JOIN ri.ingrediente i
+WHERE (:vegetariano IS NULL OR r.vegetariano = :vegetariano)
+  AND (:sinGluten IS NULL OR r.sinGluten = :sinGluten)
+  AND (:rapido IS NULL OR r.rapido = :rapido)
+  AND (:economico IS NULL OR r.economico = :economico)
+  AND (:ingrediente IS NULL OR i.nombre IS NULL OR UPPER(i.nombre) LIKE UPPER(CONCAT('%', :ingrediente, '%')))
 """)
     List<Receta> buscarRecetasPorIngredienteYPreferencias(
             @Param("ingrediente") String ingrediente,
@@ -61,5 +61,6 @@ public interface IRecetaRepository extends JpaRepository<Receta, Integer> {
             @Param("rapido") Boolean rapido,
             @Param("economico") Boolean economico
     );
+
 
 }

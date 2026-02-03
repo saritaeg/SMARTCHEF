@@ -6,7 +6,7 @@ import { RecetaDetalle } from '../modelos/receta-detalle.model';
 @Injectable({ providedIn: 'root' })
 export class RecetaService {
 
-  private apiUrl = 'http://localhost:8080/api/recetas';
+  private apiUrl = 'https://smartchef-1-sdnt.onrender.com/api/recetas';
 
   constructor(private http: HttpClient) {}
   eliminarReceta(id: number) {

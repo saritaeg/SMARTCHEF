@@ -7,12 +7,6 @@ import { RecetaDetalle } from '../modelos/receta-detalle.model';
 @Injectable({ providedIn: 'root' })
 export class RecetaService {
 
-  /**
-   * ⚠️ RECUERDA:
-   * 1. Mientras pruebes en tu PC: usa 'http://localhost:8080/api/recetas'
-   * 2. Para que tus compañeros lo vean: debes subir el Java a Render y poner
-   * aquí la URL que te dé Render (ej: 'https://smartchef-backend.onrender.com/api/recetas')
-   */
   private apiUrl = 'https://smartchef-backend.onrender.com/api/recetas';
 
   constructor(private http: HttpClient) {}
